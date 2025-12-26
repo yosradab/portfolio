@@ -645,7 +645,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const html = document.documentElement;
             const darkModeToggle = document.getElementById('darkModeToggle');
-            const navLinks = document.querySelectorAll('nav a');
+            const navLinks = document.querySelectorAll('nav a, .mobile-nav-link');
 
             // SVG Icons
             const moonIcon = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>`;
@@ -769,6 +769,32 @@
                 el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
                 fadeObserver.observe(el);
             });
+            // Mobile Menu Logic
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const closeMenuBtn = document.getElementById('closeMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+
+            function toggleMenu() {
+                const isHidden = mobileMenu.classList.contains('translate-x-full');
+                if (isHidden) {
+                    mobileMenu.classList.remove('translate-x-full');
+                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                } else {
+                    mobileMenu.classList.add('translate-x-full');
+                    document.body.style.overflow = '';
+                }
+            }
+
+            if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', toggleMenu);
+            if (closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMenu);
+
+            // Close menu when clicking a link
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    toggleMenu();
+                });
+            });
+
         });
     </script>
 </head>
@@ -804,12 +830,44 @@
                         class="nav-link text-gray-900 dark:text-gray-300 hover:text-rose-500 dark:hover:text-rose-400">Education</a>
                 </nav>
 
-                <button id="darkModeToggle"
-                    class="p-2 rounded-full text-rose-500 hover:bg-gray-100 dark:hover:bg-gray-800 transition duration-300 focus:outline-none"
-                    aria-label="Toggle dark mode"></button>
+                <div class="flex items-center gap-2">
+                    <button id="darkModeToggle"
+                        class="p-2 rounded-full text-rose-500 hover:bg-gray-100 dark:hover:bg-gray-800 transition duration-300 focus:outline-none"
+                        aria-label="Toggle dark mode"></button>
+
+                    <button id="mobileMenuBtn"
+                        class="md:hidden p-2 rounded-lg text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition focus:outline-none"
+                        aria-label="Open menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileMenu"
+        class="fixed inset-0 z-[60] bg-white/95 dark:bg-[#0a0e17]/95 backdrop-blur-xl transform translate-x-full transition-transform duration-300 md:hidden flex flex-col items-center justify-center space-y-8">
+        <button id="closeMenuBtn"
+            class="absolute top-6 right-6 p-2 text-gray-600 dark:text-gray-300 hover:text-rose-500 transition">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        <a href="#profile"
+            class="mobile-nav-link text-2xl font-bold text-gray-900 dark:text-white hover:text-rose-500 transition">Profile</a>
+        <a href="#skills"
+            class="mobile-nav-link text-2xl font-bold text-gray-900 dark:text-white hover:text-rose-500 transition">Skills</a>
+        <a href="#experience"
+            class="mobile-nav-link text-2xl font-bold text-gray-900 dark:text-white hover:text-rose-500 transition">Experience</a>
+        <a href="#projects"
+            class="mobile-nav-link text-2xl font-bold text-gray-900 dark:text-white hover:text-rose-500 transition">Projects</a>
+        <a href="#education"
+            class="mobile-nav-link text-2xl font-bold text-gray-900 dark:text-white hover:text-rose-500 transition">Education</a>
+    </div>
 
     <main class="pt-24 pb-16">
         <!-- Hero Section -->
@@ -1038,7 +1096,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
                     <!-- Programming Languages -->
-                    <div class="card-3d p-8 rounded-2xl">
+                    <div class="card-3d p-6 md:p-8 rounded-2xl">
                         <div class="flex items-center mb-6">
                             <div
                                 class="w-12 h-12 bg-gradient-to-br from-rose-500 to-rose-600 rounded-xl flex items-center justify-center mr-4">
@@ -1082,7 +1140,7 @@
                     </div>
 
                     <!-- Frameworks -->
-                    <div class="card-3d p-8 rounded-2xl">
+                    <div class="card-3d p-6 md:p-8 rounded-2xl">
                         <div class="flex items-center mb-6">
                             <div
                                 class="w-12 h-12 bg-gradient-to-br from-rose-500 to-rose-600 rounded-xl flex items-center justify-center mr-4">
@@ -1126,7 +1184,7 @@
                     </div>
 
                     <!-- Databases -->
-                    <div class="card-3d p-8 rounded-2xl">
+                    <div class="card-3d p-6 md:p-8 rounded-2xl">
                         <div class="flex items-center mb-6">
                             <div
                                 class="w-12 h-12 bg-gradient-to-br from-rose-500 to-rose-600 rounded-xl flex items-center justify-center mr-4">
@@ -1170,7 +1228,7 @@
                     </div>
 
                     <!-- DevOps & Tools -->
-                    <div class="card-3d p-8 rounded-2xl">
+                    <div class="card-3d p-6 md:p-8 rounded-2xl">
                         <div class="flex items-center mb-6">
                             <div
                                 class="w-12 h-12 bg-gradient-to-br from-rose-500 to-rose-600 rounded-xl flex items-center justify-center mr-4">
@@ -1226,12 +1284,14 @@
 
                     <!-- Job 1 -->
                     <div class="mb-12">
-                        <div class="card-3d p-8 rounded-2xl">
-                            <div class="flex flex-col sm:flex-row justify-between items-start mb-4">
+                        <div class="card-3d p-6 md:p-8 rounded-2xl">
+                            <div class="flex flex-col sm:flex-row justify-between items-start mb-4 gap-2 sm:gap-0">
                                 <div>
-                                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Full Stack Engineer
+                                    <h3 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">Full Stack
+                                        Engineer
                                     </h3>
-                                    <p class="text-xl text-rose-600 dark:text-rose-400 font-medium">MEISTE CAPITAL</p>
+                                    <p class="text-lg md:text-xl text-rose-600 dark:text-rose-400 font-medium">MEISTE
+                                        CAPITAL</p>
                                     <p class="text-gray-600 dark:text-gray-400">Nancy, France</p>
                                 </div>
                                 <span
@@ -1247,8 +1307,10 @@
                                             d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                                             clip-rule="evenodd"></path>
                                     </svg>
-                                    Led development of scalable web applications using <strong>Symfony</strong> and
-                                    <strong>React</strong> for enterprise projects
+                                    <div class="flex-1 min-w-0">
+                                        Led development of scalable web applications using <strong> Symfony </strong>
+                                        and <strong> React </strong> for enterprise projects
+                                    </div>
                                 </li>
                                 <li class="flex items-start">
                                     <svg class="w-5 h-5 text-rose-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor"
@@ -1257,8 +1319,10 @@
                                             d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                                             clip-rule="evenodd"></path>
                                     </svg>
-                                    Designed and implemented business solutions for event management, e-commerce, and
-                                    interactive React interfaces
+                                    <div class="flex-1 min-w-0">
+                                        Designed and implemented business solutions for event management, e-commerce,
+                                        and interactive React interfaces
+                                    </div>
                                 </li>
                                 <li class="flex items-start">
                                     <svg class="w-5 h-5 text-rose-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor"
@@ -1267,8 +1331,10 @@
                                             d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                                             clip-rule="evenodd"></path>
                                     </svg>
-                                    Managed complex data structures and integrated third-party APIs with secure
-                                    authentication
+                                    <div class="flex-1 min-w-0">
+                                        Managed complex data structures and integrated third-party APIs with secure
+                                        authentication
+                                    </div>
                                 </li>
                                 <li class="flex items-start">
                                     <svg class="w-5 h-5 text-rose-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor"
@@ -1277,8 +1343,10 @@
                                             d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                                             clip-rule="evenodd"></path>
                                     </svg>
-                                    Ensured efficient development cycles using <strong>Agile (Scrum)</strong>
-                                    methodology
+                                    <div class="flex-1 min-w-0">
+                                        Ensured efficient development cycles using <strong> Agile (Scrum) </strong>
+                                        methodology
+                                    </div>
                                 </li>
                             </ul>
                         </div>
@@ -1286,11 +1354,13 @@
 
                     <!-- Job 2 -->
                     <div class="mb-12">
-                        <div class="card-3d p-8 rounded-2xl">
-                            <div class="flex flex-col sm:flex-row justify-between items-start mb-4">
+                        <div class="card-3d p-6 md:p-8 rounded-2xl">
+                            <div class="flex flex-col sm:flex-row justify-between items-start mb-4 gap-2 sm:gap-0">
                                 <div>
-                                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Software Engineer</h3>
-                                    <p class="text-xl text-rose-600 dark:text-rose-400 font-medium">EASYSOLUTIONS</p>
+                                    <h3 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">Software
+                                        Engineer</h3>
+                                    <p class="text-lg md:text-xl text-rose-600 dark:text-rose-400 font-medium">
+                                        EASYSOLUTIONS</p>
                                     <p class="text-gray-600 dark:text-gray-400">Tunis, Tunisia</p>
                                 </div>
                                 <span
@@ -1306,8 +1376,10 @@
                                             d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                                             clip-rule="evenodd"></path>
                                     </svg>
-                                    Developed and deployed robust web and desktop applications (.NET and React) for
-                                    domains like POS and banking
+                                    <div class="flex-1 min-w-0">
+                                        Developed and deployed robust web and desktop applications (.NET and React) for
+                                        domains like POS and banking
+                                    </div>
                                 </li>
                                 <li class="flex items-start">
                                     <svg class="w-5 h-5 text-rose-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor"
@@ -1316,8 +1388,10 @@
                                             d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                                             clip-rule="evenodd"></path>
                                     </svg>
-                                    Implemented <strong>Docker</strong> containers and configured continuous integration
-                                    with <strong>Jenkins</strong>
+                                    <div class="flex-1 min-w-0">
+                                        Implemented <strong> Docker</strong> containers and configured continuous
+                                        integration with <strong> Jenkins </strong>
+                                    </div>
                                 </li>
                                 <li class="flex items-start">
                                     <svg class="w-5 h-5 text-rose-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor"
@@ -1326,8 +1400,10 @@
                                             d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                                             clip-rule="evenodd"></path>
                                     </svg>
-                                    Applied strong understanding of software development principles and design patterns
-                                    in an Agile environment
+                                    <div class="flex-1">
+                                        Applied strong understanding of software development principles and design
+                                        patterns in an Agile environment
+                                    </div>
                                 </li>
                             </ul>
                         </div>
@@ -1335,12 +1411,14 @@
 
                     <!-- Job 3 -->
                     <div class="mb-12">
-                        <div class="card-3d p-8 rounded-2xl">
-                            <div class="flex flex-col sm:flex-row justify-between items-start mb-4">
+                        <div class="card-3d p-6 md:p-8 rounded-2xl">
+                            <div class="flex flex-col sm:flex-row justify-between items-start mb-4 gap-2 sm:gap-0">
                                 <div>
-                                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Full Stack Developer
+                                    <h3 class="text-xl md:text-2xl font-bold text-gray-900 dark:text-white">Full Stack
+                                        Developer
                                         (Freelance)</h3>
-                                    <p class="text-xl text-rose-600 dark:text-rose-400 font-medium">Independent</p>
+                                    <p class="text-lg md:text-xl text-rose-600 dark:text-rose-400 font-medium">
+                                        Independent</p>
                                 </div>
                                 <span
                                     class="bg-gradient-to-r from-rose-500 to-rose-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg mt-2 sm:mt-0">
@@ -1355,8 +1433,10 @@
                                             d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                                             clip-rule="evenodd"></path>
                                     </svg>
-                                    Built responsive interfaces using <strong>Angular</strong> and robust server-side
-                                    logic with <strong>Spring Boot</strong>
+                                    <div class="flex-1">
+                                        Built responsive interfaces using <strong> Angular </strong> and robust
+                                        server-side logic with <strong> Spring Boot</strong>
+                                    </div>
                                 </li>
                                 <li class="flex items-start">
                                     <svg class="w-5 h-5 text-rose-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor"
@@ -1365,7 +1445,9 @@
                                             d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                                             clip-rule="evenodd"></path>
                                     </svg>
-                                    Designed and maintained secure databases and integrated third-party APIs
+                                    <div class="flex-1">
+                                        Designed and maintained secure databases and integrated third-party APIs
+                                    </div>
                                 </li>
                                 <li class="flex items-start">
                                     <svg class="w-5 h-5 text-rose-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor"
@@ -1374,8 +1456,10 @@
                                             d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
                                             clip-rule="evenodd"></path>
                                     </svg>
-                                    Ensured data security and deployed applications using <strong> Docker</strong> and
-                                    <strong>Jenkins CI/CD</strong>
+                                    <div class="flex-1">
+                                        Ensured data security and deployed applications using <strong> Docker </strong>
+                                        and <strong> Jenkins CI/CD </strong>
+                                    </div>
                                 </li>
                             </ul>
                         </div>
@@ -1473,7 +1557,7 @@
 
                     <!-- Education -->
                     <div class="lg:col-span-2 space-y-8">
-                        <div class="card-3d p-8 rounded-2xl">
+                        <div class="card-3d p-6 md:p-8 rounded-2xl">
                             <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Education</h3>
                             <div class="space-y-6">
                                 <div class="border-l-4 border-rose-500 pl-6">
@@ -1492,7 +1576,7 @@
                             </div>
                         </div>
 
-                        <div class="card-3d p-8 rounded-2xl">
+                        <div class="card-3d p-6 md:p-8 rounded-2xl">
                             <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Internship Highlights</h3>
                             <ul class="space-y-4 text-gray-700 dark:text-gray-300">
                                 <li class="flex items-start">
