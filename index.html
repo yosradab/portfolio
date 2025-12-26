@@ -1,137 +1,657 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yosra Dab | Full Stack Software Engineer</title>
-    <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Use Inter font -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f0f4f8; /* Light blue-gray background for depth */
-            color: #1f2937; /* Default text color */
-            transition: background-color 0.3s, color 0.3s;
-        }
-        /* Custom section title styling */
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background-color: #047857; /* Darker Teal accent */
-            margin-top: 8px;
-            border-radius: 9999px;
-            transition: background-color 0.3s;
-        }
-        /* Active nav link */
-        .nav-link.active {
-            color: #047857;
-            font-weight: 700;
-        }
-        /* Enhanced Card Styles */
-        .card {
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-        }
-        /* Experience Timeline Style */
-        .timeline-item {
+            background: linear-gradient(180deg, #fff1f2 0%, #fffbeeb5 50%, #fdf2f8 100%);
+            /* Rose -> Warm -> Lavender */
+            background-attachment: fixed;
+            color: #000000;
+            overflow-x: hidden;
             position: relative;
-            padding-left: 20px;
-            margin-bottom: 2rem;
-            border-left: 3px solid #6ee7b7; /* Light teal vertical line */
-            transition: border-left-color 0.3s;
+            transition: background 0.3s ease, color 0.3s ease;
         }
-        .timeline-item::before {
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        span,
+        div,
+        a,
+        li {
+            color: inherit;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-weight: 800;
+            color: #000000;
+        }
+
+        .dark h1,
+        .dark h2,
+        .dark h3,
+        .dark h4,
+        .dark h5,
+        .dark h6 {
+            color: #ffffff;
+        }
+
+        /* Hero Section - Tech Professional */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(244, 63, 94, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(244, 63, 94, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Animated Hexagon Pattern */
+        .geometric-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .hex-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.08;
+        }
+
+        .hex-pattern::before,
+        .hex-pattern::after {
             content: '';
             position: absolute;
-            left: -8px;
-            top: 5px;
-            width: 16px;
-            height: 16px;
-            background-color: #047857; /* Dark teal circle marker */
-            border-radius: 50%;
-            border: 3px solid #fff;
-            transition: background-color 0.3s, border-color 0.3s;
-        }
-        /* Profile Contact Card Styling */
-        .profile-card {
-            background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-            transition: background 0.3s, box-shadow 0.3s;
+            width: 200%;
+            height: 200%;
+            background-image:
+                repeating-linear-gradient(0deg,
+                    transparent,
+                    transparent 100px,
+                    rgba(244, 63, 94, 0.1) 100px,
+                    rgba(244, 63, 94, 0.1) 102px),
+                repeating-linear-gradient(60deg,
+                    transparent,
+                    transparent 100px,
+                    rgba(244, 63, 94, 0.1) 100px,
+                    rgba(244, 63, 94, 0.1) 102px),
+                repeating-linear-gradient(120deg,
+                    transparent,
+                    transparent 100px,
+                    rgba(244, 63, 94, 0.1) 100px,
+                    rgba(244, 63, 94, 0.1) 102px);
         }
 
-        /* --- DARK MODE STYLES --- */
-        .dark body {
-            background-color: #111827; /* Dark background */
-            color: #e5e7eb; /* Light text */
+        .hex-pattern::before {
+            animation: hexMove 40s linear infinite;
         }
+
+        @keyframes hexMove {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(100px);
+            }
+        }
+
+        /* Floating Code Elements */
+        .code-float {
+            position: absolute;
+            font-family: 'Courier New', monospace;
+            color: rgba(244, 63, 94, 0.15);
+            font-size: 14px;
+            white-space: nowrap;
+            animation: floatCode 25s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes floatCode {
+            0% {
+                transform: translateY(100vh) translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.3;
+            }
+
+            90% {
+                opacity: 0.3;
+            }
+
+            100% {
+                transform: translateY(-100vh) translateX(50px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Header - Professional Tech Style */
+        /* Profile and Strengths Containers - Rose Theme Identity */
+        #profile,
+        #strengths {
+            background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%);
+            border: 1px solid rgba(244, 63, 94, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .dark #profile,
+        .dark #strengths {
+            background: rgba(18, 18, 18, 0.7);
+            border: 1px solid rgba(244, 63, 94, 0.2);
+        }
+
+        header {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.9);
+            border-bottom: 1px solid rgba(244, 63, 94, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
         .dark header {
-            background-color: #1f2937;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
-        }
-        /* Dark backgrounds for sections and cards */
-        .dark .bg-white, 
-        .dark section,
-        .dark .profile-card, 
-        .dark .bg-gray-50 {
-            background-color: #1f2937 !important;
+            background: rgba(10, 14, 23, 0.95);
+            border-bottom: 1px solid rgba(244, 63, 94, 0.3);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
         }
 
-        /* Dark text colors */
-        .dark .text-gray-900, .dark .text-gray-800 { color: #f9fafb !important; }
-        .dark .text-gray-700 { color: #d1d5db !important; }
-        .dark .text-gray-600 { color: #9ca3af !important; }
 
-        /* Dark accents */
-        .dark .text-teal-700 { color: #6ee7b7 !important; }
-        .dark .section-title::after { background-color: #6ee7b7; }
-        .dark .timeline-item::before {
-            background-color: #6ee7b7;
-            border-color: #1f2937;
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: #111827;
         }
-        .dark .timeline-item {
-            border-left-color: #34d399;
+
+        .dark h1,
+        .dark h2,
+        .dark h3,
+        .dark h4,
+        .dark h5,
+        .dark h6 {
+            color: #f9fafb;
         }
-        .dark .bg-teal-100 {
-            background-color: #374151; /* Darker background for pill */
-            color: #a7f3d0;
+
+        /* Hero Section - Tech Professional */
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 241, 242, 0.5) 100%);
+            /* Slight Rose Tint */
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(244, 63, 94, 0.1);
+            transition: background 0.3s ease;
+            box-shadow: 0 20px 40px -10px rgba(244, 63, 94, 0.1);
+            /* Soft glow shadow */
         }
-        .dark .border-gray-200 {
-            border-color: #4b5563;
+
+        .dark .hero-gradient {
+            /* Neutral Black Gradient - No Blue */
+            background: linear-gradient(135deg, #050505 0%, #121212 100%);
+            box-shadow: none;
         }
-        .dark .shadow-2xl, .dark .shadow-xl {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+
+        .hero-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                    transparent 0%,
+                    rgba(244, 63, 94, 0.1) 50%,
+                    transparent 100%);
+            animation: shimmer 8s infinite;
         }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+
+        /* Skill Progress Bars - Tech Style */
+        .skill-bar {
+            height: 10px;
+            background: rgba(229, 231, 235, 0.8);
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(244, 63, 94, 0.2);
+        }
+
+        .dark .skill-bar {
+            background: rgba(15, 20, 25, 0.9);
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #f43f5e, #e11d48, #f43f5e);
+            background-size: 200% 100%;
+            border-radius: 5px;
+            transition: width 1.5s ease-out;
+            box-shadow: 0 0 20px rgba(244, 63, 94, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            animation: shimmerBar 3s linear infinite;
+            position: relative;
+        }
+
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: slideShine 2s infinite;
+        }
+
+        @keyframes shimmerBar {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        @keyframes slideShine {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-weight: 800;
+            color: #000000;
+        }
+
+        .dark h1,
+        .dark h2,
+        .dark h3,
+        .dark h4,
+        .dark h5,
+        .dark h6 {
+            color: #ffffff;
+        }
+
+        /* Enhanced Cards - Professional Layered Look */
+        .card-3d {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: rgba(255, 255, 255, 0.6);
+            /* More transparent for glass effect */
+            backdrop-filter: blur(20px);
+            /* Stronger blur */
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            /* White border for 'layer' edge */
+            position: relative;
+            overflow: hidden;
+            box-shadow:
+                0 4px 6px -1px rgba(0, 0, 0, 0.05),
+                0 10px 15px -3px rgba(0, 0, 0, 0.05),
+                0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+            /* Inner light for 3D feel */
+        }
+
+        .card-3d:hover {
+            transform: translateY(-8px);
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.08),
+                0 0 20px rgba(244, 63, 94, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            border-color: rgba(244, 63, 94, 0.3);
+            background: rgba(255, 255, 255, 0.85);
+        }
+
+        .dark .card-3d {
+            background: rgba(15, 20, 25, 0.6);
+            border: 1px solid rgba(244, 63, 94, 0.2);
+            box-shadow: none;
+        }
+
+        .dark .card-3d:hover {
+            background: rgba(15, 20, 25, 0.8);
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(244, 63, 94, 0.3),
+                inset 0 1px 0 rgba(244, 63, 94, 0.2);
+            border-color: rgba(244, 63, 94, 0.4);
+        }
+
+
+        /* Section Titles - Tech Style */
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 16px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #f43f5e, transparent);
+            box-shadow: 0 0 10px rgba(244, 63, 94, 0.6);
+            animation: expand 0.6s ease-out;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 4px;
+            height: 4px;
+            background: #f43f5e;
+            box-shadow:
+                0 0 10px rgba(244, 63, 94, 0.8),
+                0 0 20px rgba(244, 63, 94, 0.6);
+            animation: expandDot 0.6s ease-out;
+        }
+
+        @keyframes expand {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 80px;
+            }
+        }
+
+        @keyframes expandDot {
+            from {
+                transform: scale(0);
+            }
+
+            to {
+                transform: scale(1);
+            }
+        }
+
+        /* Profile Picture - Professional Tech Glow */
+        .profile-glow {
+            position: relative;
+        }
+
+        .profile-glow::before {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            background: linear-gradient(45deg, #f43f5e, #e11d48, #f43f5e);
+            background-size: 200% 200%;
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(20px);
+            opacity: 0.6;
+            animation: rotateGlow 4s linear infinite;
+        }
+
+        @keyframes rotateGlow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Fade In Animation */
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Stagger Animation for Cards */
+        .stagger-1 {
+            animation-delay: 0.1s;
+        }
+
+        .stagger-2 {
+            animation-delay: 0.2s;
+        }
+
+        .stagger-3 {
+            animation-delay: 0.3s;
+        }
+
+        .stagger-4 {
+            animation-delay: 0.4s;
+        }
+
+        /* Tech Badge - Professional Style */
+        .tech-badge {
+            transition: all 0.3s ease;
+            cursor: default;
+            border: 1px solid rgba(244, 63, 94, 0.3);
+            background: rgba(244, 63, 94, 0.1);
+        }
+
+        .tech-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(244, 63, 94, 0.4);
+            border-color: rgba(244, 63, 94, 0.6);
+            background: rgba(244, 63, 94, 0.15);
+        }
+
+        /* Navigation Link - Tech Style */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #f43f5e, #e11d48);
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px rgba(244, 63, 94, 0.5);
+        }
+
+        .nav-link:hover::before,
+        .nav-link.active::before {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: #f43f5e;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(244, 63, 94, 0.3);
+        }
+
+        /* Dark Mode Styles */
+        .dark body {
+            background: #0a0e17;
+            color: #e5e7eb;
+        }
+
+        /* Ensure texts are dark in light mode by default due to inheritance, but force white in dark mode for specific
+    utils if needed */
+        .dark .text-gray-900 {
+            color: #f9fafb !important;
+        }
+
+        .dark .text-gray-800 {
+            color: #f3f4f6 !important;
+        }
+
+        .dark .text-gray-700 {
+            color: #d1d5db !important;
+        }
+
+        .dark .text-gray-600 {
+            color: #9ca3af !important;
+        }
+
+        .dark .text-gray-500 {
+            color: #6b7280 !important;
+        }
+
+        /* Contact Info Icons */
+        .contact-icon {
+            transition: all 0.3s ease;
+        }
+
+        .contact-icon:hover {
+            transform: translateX(5px);
+            color: #f43f5e;
+        }
+
+        /* Project Card Ribbon */
+        .project-ribbon {
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: linear-gradient(135deg, #f43f5e, #e11d48);
+            color: white;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            font-size: 12px;
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #f43f5e, #e11d48);
+            z-index: 9999;
+            transition: width 0.1s;
+            box-shadow: 0 0 10px rgba(244, 63, 94, 0.6);
+        }
+
+        /* Main Content Container */
+        main {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Footer */
+        footer {
+            background: #f3f4f6;
+            border-top: 1px solid rgba(244, 63, 94, 0.1);
+        }
+
         .dark footer {
-            background-color: #1f2937;
+            background: linear-gradient(135deg, #0a0e17 0%, #0f1419 100%);
+            border-top: 1px solid rgba(244, 63, 94, 0.3);
         }
-        .dark .border-t-4.border-teal-500 {
-            border-color: #34d399;
-        }
-        .dark .ring-teal-600 {
-            --tw-ring-color: #6ee7b7;
+
+        /* Circuit Lines Decoration */
+        .circuit-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            background-image:
+                radial-gradient(circle at 20% 50%, transparent 20%, #f43f5e 21%, #f43f5e 22%, transparent 23%),
+                radial-gradient(circle at 80% 80%, transparent 20%, #f43f5e 21%, #f43f5e 22%, transparent 23%);
         }
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const navLinks = document.querySelectorAll('nav a');
             const html = document.documentElement;
             const darkModeToggle = document.getElementById('darkModeToggle');
+            const navLinks = document.querySelectorAll('nav a');
 
-            // SVG Icons for the toggle button
-            const moonIcon = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>`;
-            const sunIcon = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>`;
+            // SVG Icons
+            const moonIcon = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>`;
+            const sunIcon = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>`;
 
-            // --- Dark Mode Logic ---
+            // Dark Mode
             function updateDarkMode(isDark) {
                 if (isDark) {
                     html.classList.add('dark');
@@ -144,334 +664,975 @@
                 }
             }
 
-            // Initialization: Check storage or system preference
             const storedPreference = localStorage.getItem('darkMode');
             const systemPreference = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            
+
             if (storedPreference === 'true' || (storedPreference === null && systemPreference)) {
                 updateDarkMode(true);
             } else {
                 updateDarkMode(false);
             }
 
-            // Event listener for toggle button
             darkModeToggle.addEventListener('click', () => {
-                const isCurrentlyDark = html.classList.contains('dark');
-                updateDarkMode(!isCurrentlyDark);
+                updateDarkMode(!html.classList.contains('dark'));
             });
-            // --- End Dark Mode Logic ---
 
-
-            // --- Smooth Scrolling Logic ---
+            // Smooth Scrolling
             navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
+                link.addEventListener('click', function (e) {
                     e.preventDefault();
                     const targetId = this.getAttribute('href').substring(1);
                     const targetElement = document.getElementById(targetId);
-                    
+
                     if (targetElement) {
                         window.scrollTo({
-                            top: targetElement.offsetTop - 80, // Offset for fixed header
+                            top: targetElement.offsetTop - 80,
                             behavior: 'smooth'
                         });
                     }
-                    
+
                     navLinks.forEach(l => l.classList.remove('active'));
                     this.classList.add('active');
                 });
             });
 
-            // Initial link activation
             if (navLinks.length > 0) navLinks[0].classList.add('active');
+
+            // Scroll Progress Bar
+            const progressBar = document.querySelector('.scroll-progress');
+            window.addEventListener('scroll', () => {
+                const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (window.scrollY / windowHeight) * 100;
+                progressBar.style.width = scrolled + '%';
+            });
+
+            // Floating Code Elements
+            const geometricBg = document.querySelector('.geometric-bg');
+            const codeSnippets = [
+                'function()',
+                'const x = {}',
+                'import React',
+                'return true;',
+                'async await',
+                'class Main',
+                '=> {}',
+                'let data',
+                'if (true)',
+                'while(i)',
+            ];
+
+            for (let i = 0; i < 10; i++) {
+                const codeElement = document.createElement('div');
+                codeElement.classList.add('code-float');
+                codeElement.textContent = codeSnippets[i];
+                codeElement.style.left = Math.random() * 100 + '%';
+                codeElement.style.animationDelay = Math.random() * 25 + 's';
+                codeElement.style.animationDuration = (Math.random() * 15 + 20) + 's';
+                geometricBg.appendChild(codeElement);
+            }
+
+            // Skill Bar Animation on Scroll
+            const observerOptions = {
+                threshold: 0.5,
+                rootMargin: '0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const progressBars = entry.target.querySelectorAll('.skill-progress');
+                        progressBars.forEach(bar => {
+                            const width = bar.getAttribute('data-width');
+                            bar.style.width = width;
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            const skillsSection = document.getElementById('skills');
+            if (skillsSection) observer.observe(skillsSection);
+
+            // Intersection Observer for Fade-in Animations
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const fadeObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            fadeElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                fadeObserver.observe(el);
+            });
         });
     </script>
 </head>
 
-<body class="text-gray-800">
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress"></div>
 
-    <!-- Fixed Header / Navigation -->
-    <header class="fixed top-0 left-0 right-0 bg-white shadow-xl z-50">
+    <!-- Geometric Tech Background -->
+    <div class="geometric-bg">
+        <div class="hex-pattern"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <div class="text-2xl font-bold text-gray-900 transition duration-300">Yosra <span class="text-teal-700">Dab</span></div>
-                
-                <nav class="hidden md:flex space-x-8 text-lg">
-                    <a href="#profile" class="nav-link text-gray-600 hover:text-teal-700 transition duration-150">Profile</a>
-                    <a href="#skills" class="nav-link text-gray-600 hover:text-teal-700 transition duration-150">Skills</a>
-                    <a href="#experience" class="nav-link text-gray-600 hover:text-teal-700 transition duration-150">Experience</a>
-                    <a href="#projects" class="nav-link text-gray-600 hover:text-teal-700 transition duration-150">Projects</a>
-                    <a href="#education" class="nav-link text-gray-600 hover:text-teal-700 transition duration-150">Education</a>
+                <div class="text-2xl font-bold">
+                    <span class="text-gray-900 dark:text-white">Yosra</span>
+                    <span class="bg-gradient-to-r from-rose-500 to-rose-600 bg-clip-text text-transparent">Dab</span>
+                </div>
+
+                <nav class="hidden md:flex space-x-8 text-base">
+                    <a href="#profile"
+                        class="nav-link text-gray-900 dark:text-gray-300 hover:text-rose-500 dark:hover:text-rose-400">Profile</a>
+                    <a href="#skills"
+                        class="nav-link text-gray-900 dark:text-gray-300 hover:text-rose-500 dark:hover:text-rose-400">Skills</a>
+                    <a href="#experience"
+                        class="nav-link text-gray-900 dark:text-gray-300 hover:text-rose-500 dark:hover:text-rose-400">Experience</a>
+                    <a href="#projects"
+                        class="nav-link text-gray-900 dark:text-gray-300 hover:text-rose-500 dark:hover:text-rose-400">Projects</a>
+                    <a href="#education"
+                        class="nav-link text-gray-900 dark:text-gray-300 hover:text-rose-500 dark:hover:text-rose-400">Education</a>
                 </nav>
 
-                <div class="flex items-center space-x-4">
-                    <!-- Dark Mode Toggle Button -->
-                    <button id="darkModeToggle" class="p-2 rounded-full text-teal-700 hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300 focus:outline-none" aria-label="Toggle dark mode">
-                        <!-- Initial icon set by JS -->
-                    </button>
-
-                    <!-- Mobile Contact Link -->
-                    <div class="md:hidden">
-                        <a href="#contact-info" class="text-teal-700 font-semibold hover:text-teal-800">Contact</a>
-                    </div>
-                </div>
+                <button id="darkModeToggle"
+                    class="p-2 rounded-full text-rose-500 hover:bg-gray-100 dark:hover:bg-gray-800 transition duration-300 focus:outline-none"
+                    aria-label="Toggle dark mode"></button>
             </div>
         </div>
     </header>
 
-    <main class="pt-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <main class="pt-24 pb-16">
+        <!-- Hero Section -->
+        <section id="hero" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
+            <div class="hero-gradient rounded-3xl shadow-2xl overflow-hidden relative">
+                <!-- Floating Particles Background -->
+                <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                    <div class="absolute top-10 left-10 w-2 h-2 bg-rose-400/30 rounded-full animate-pulse"></div>
+                    <div class="absolute top-20 right-20 w-3 h-3 bg-rose-500/20 rounded-full animate-pulse"
+                        style="animation-delay: 0.5s;"></div>
+                    <div class="absolute bottom-20 left-1/4 w-2 h-2 bg-rose-300/40 rounded-full animate-pulse"
+                        style="animation-delay: 1s;"></div>
+                    <div class="absolute bottom-10 right-1/3 w-3 h-3 bg-rose-400/25 rounded-full animate-pulse"
+                        style="animation-delay: 1.5s;"></div>
+                </div>
 
-        <!-- Hero / Profile Header -->
-        <section id="hero" class="bg-white rounded-xl shadow-2xl mb-16 overflow-hidden transition duration-300">
-            <div class="flex flex-col md:flex-row items-center gap-10">
-                
-                <!-- Profile Image & Contact Card -->
-                <div class="w-full md:w-1/3 p-6 profile-card transition duration-300">
-                    <div class="flex flex-col items-center">
-                        <!-- Placeholder Image -->
-                         
-                        <img src="https://placehold.co/200x200/4B5563/FFFFFF?text=Yosra+Dab" alt="Profile Picture Placeholder" class="w-40 h-40 rounded-full object-cover ring-4 ring-teal-600 mb-6 border-4 border-white dark:border-gray-800 shadow-lg transition duration-300">
-                        <h1 class="text-4xl font-extrabold text-gray-900 transition duration-300">YOSRA DAB</h1>
-                        <p class="text-xl text-teal-700 font-medium mb-8 transition duration-300">FULL STACK SOFTWARE ENGINEER</p>
+                <div class="relative z-10 p-8 md:p-12">
+                    <!-- Top Section: Photo + Name + Contact -->
+                    <div class="flex flex-col md:flex-row items-center md:items-start gap-16 mb-12">
+                        <!-- Enhanced Profile Image with Better Lighting -->
+                        <div class="relative group">
+                            <!-- Animated Border Ring -->
+                            <div
+                                class="absolute -inset-1 bg-gradient-to-r from-rose-500 via-rose-400 to-rose-600 rounded-full opacity-75 group-hover:opacity-100 blur-lg transition duration-500 animate-pulse">
+                            </div>
+
+                            <!-- Main Image Container -->
+                            <div class="relative">
+                                <!-- Glow Effect -->
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-tr from-rose-500/40 via-transparent to-rose-400/40 rounded-full blur-2xl">
+                                </div>
+
+                                <!-- Image -->
+                                <img src="yosra.jpg" alt="Yosra Dab"
+                                    class="relative w-56 h-56 md:w-64 md:h-64 rounded-full object-cover ring-4 ring-white/20 shadow-2xl transform group-hover:scale-105 transition duration-500">
+
+                                <!-- Status Badge -->
+                                <div
+                                    class="absolute bottom-4 right-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-4 py-2 rounded-full text-xs font-bold shadow-lg flex items-center gap-2 animate-bounce">
+                                    <span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                                    Available for Work
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Name, Title & Contact Info -->
+                        <div class="flex-1 text-center md:text-left">
+                            <h1
+                                class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 dark:text-white mb-3 drop-shadow-2xl">
+                                YOSRA <span
+                                    class="bg-gradient-to-r from-rose-400 to-rose-600 bg-clip-text text-transparent">DAB</span>
+                            </h1>
+                            <p
+                                class="text-2xl md:text-3xl text-rose-500 dark:text-rose-400 font-semibold mb-6 drop-shadow-md">
+                                Full Stack Software Engineer
+                            </p>
+                            <p class="text-lg text-gray-900 dark:text-white/80 mb-8 max-w-2xl">
+                                Crafting elegant solutions with modern technologies • Passionate about clean code & user
+                                experience
+                            </p>
+
+                            <!-- Contact Links - Redesigned -->
+                            <div class="flex flex-wrap justify-center md:justify-start gap-3">
+                                <a href="mailto:Dabyosra@gmail.com"
+                                    class="group relative bg-white/10 backdrop-blur-md hover:bg-white/20 border border-gray-200 dark:border-white/20 text-gray-900 dark:text-white px-5 py-3 rounded-xl text-sm font-semibold transition-all duration-300 flex items-center gap-2 hover:shadow-xl hover:shadow-rose-500/30 hover:-translate-y-1 bg-white dark:bg-white/10">
+                                    <svg class="w-5 h-5 text-rose-500 dark:text-rose-400 group-hover:scale-110 transition"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                        </path>
+                                    </svg>
+                                    Email
+                                </a>
+                                <a href="https://www.linkedin.com/in/yosradab/" target="_blank"
+                                    class="group relative bg-white/10 backdrop-blur-md hover:bg-white/20 border border-gray-200 dark:border-white/20 text-gray-900 dark:text-white px-5 py-3 rounded-xl text-sm font-semibold transition-all duration-300 flex items-center gap-2 hover:shadow-xl hover:shadow-rose-500/30 hover:-translate-y-1 bg-white dark:bg-white/10">
+                                    <svg class="w-5 h-5 text-rose-500 dark:text-rose-400 group-hover:scale-110 transition"
+                                        fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.568-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                    </svg>
+                                    LinkedIn
+                                </a>
+                                <a href="https://github.com/yosradab?tab=repositories" target="_blank"
+                                    class="group relative bg-white/10 backdrop-blur-md hover:bg-white/20 border border-gray-200 dark:border-white/20 text-gray-900 dark:text-white px-5 py-3 rounded-xl text-sm font-semibold transition-all duration-300 flex items-center gap-2 hover:shadow-xl hover:shadow-rose-500/30 hover:-translate-y-1 bg-white dark:bg-white/10">
+                                    <svg class="w-5 h-5 text-rose-500 dark:text-rose-400 group-hover:scale-110 transition"
+                                        fill="currentColor" viewBox="0 0 24 24">
+                                        <path fill-rule="evenodd"
+                                            d="M12 2C6.477 2 2 6.477 2 12c0 4.254 2.75 7.86 6.567 9.157.48.088.654-.208.654-.463 0-.23-.009-.844-.014-1.656-2.67.576-3.232-1.288-3.232-1.288-.437-1.112-1.065-1.411-1.065-1.411-.873-.598.066-.587.066-.587.96.067 1.464.985 1.464.985.855 1.468 2.238 1.043 2.784.796.086-.618.337-1.043.614-1.284-2.115-.24-4.327-1.058-4.327-4.7 0-1.04.37-1.887.98-2.55-.098-.24-.425-1.204.093-2.51 0 0 .8-.256 2.62.976.76-.211 1.575-.317 2.384-.321.81.004 1.624.11 2.384.321 1.82-1.232 2.62-.976 2.62-.976.518 1.306.191 2.27.093 2.51.61.663.98 1.51.98 2.55 0 3.65-2.213 4.457-4.32 4.693.34.293.64.87.64 1.754 0 1.267-.011 2.287-.011 2.598 0 .254.173.552.662.458C21.25 19.858 24 16.254 24 12c0-5.523-4.477-10-10-10z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    GitHub
+                                </a>
+                                <a href="tel:+21623309333"
+                                    class="group relative bg-white/10 backdrop-blur-md hover:bg-white/20 border border-gray-200 dark:border-white/20 text-gray-900 dark:text-white px-5 py-3 rounded-xl text-sm font-semibold transition-all duration-300 flex items-center gap-2 hover:shadow-xl hover:shadow-rose-500/30 hover:-translate-y-1 bg-white dark:bg-white/10">
+                                    <svg class="w-5 h-5 text-rose-500 dark:text-rose-400 group-hover:scale-110 transition"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                                        </path>
+                                    </svg>
+                                    Phone
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <div id="contact-info" class="space-y-4 w-full text-center md:text-left border-t pt-4 border-gray-200 dark:border-gray-600 transition duration-300">
-                        <div class="flex items-center justify-center md:justify-start text-gray-600">
-                            <!-- Icon for Phone -->
-                            <svg class="w-5 h-5 mr-3 text-teal-600 transition duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                            <span class="text-sm">+216 23 309 333</span>
+
+
+
+
+                    <!-- About Me Section -->
+                    <div id="profile"
+                        class="bg-white/80 dark:bg-white/5 backdrop-blur-sm border border-gray-200 dark:border-white/10 rounded-2xl p-8 transition-colors duration-300">
+                        <h2
+                            class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+                            <div
+                                class="w-12 h-12 bg-gradient-to-br from-rose-500 to-rose-600 rounded-xl flex items-center justify-center shadow-lg shadow-rose-500/30">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                                </svg>
+                            </div>
+                            About Me
+                        </h2>
+                        <div class="space-y-4 text-gray-900 dark:text-white/90">
+                            <p class="text-lg md:text-xl leading-relaxed">
+                                Experienced <span class="text-rose-600 dark:text-rose-400 font-semibold">Full Stack
+                                    Engineer</span> with a
+                                degree in Software Engineering.
+                                Proven expertise in building robust web applications using <span
+                                    class="text-rose-600 dark:text-rose-400 font-semibold">Spring Boot, .NET,
+                                    Angular, React, WordPress, and Symfony</span>.
+                            </p>
+                            <p class="text-lg md:text-xl leading-relaxed">
+                                Strong ability to deliver secure and efficient solutions across various sectors,
+                                including
+                                healthcare. Passionate about applying <span
+                                    class="text-rose-600 dark:text-rose-400 font-semibold">Agile
+                                    methodologies</span> to ensure
+                                high-quality, continuous delivery.
+                            </p>
+
+
                         </div>
-                        <div class="flex items-center justify-center md:justify-start text-gray-600">
-                            <!-- Icon for Email -->
-                            <svg class="w-5 h-5 mr-3 text-teal-600 transition duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                            <span class="text-sm">Dabyosra@gmail.com</span>
-                        </div>
-                        <div class="flex items-center justify-center md:justify-start text-gray-600">
-                            <!-- Icon for LinkedIn -->
-                            <svg class="w-5 h-5 mr-3 text-teal-600 transition duration-300" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.568-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                            <a href="https://www.linkedin.com/in/yosradab/" target="_blank" class="text-sm hover:underline">LinkedIn Profile</a>
-                        </div>
-                        <div class="flex items-center justify-center md:justify-start text-gray-600">
-                            <!-- Icon for GitHub (FIXED: Complete inline SVG path used) -->
-                            <svg class="w-5 h-5 mr-3 text-teal-600 transition duration-300" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.254 2.75 7.86 6.567 9.157.48.088.654-.208.654-.463 0-.23-.009-.844-.014-1.656-2.67.576-3.232-1.288-3.232-1.288-.437-1.112-1.065-1.411-1.065-1.411-.873-.598.066-.587.066-.587.96.067 1.464.985 1.464.985.855 1.468 2.238 1.043 2.784.796.086-.618.337-1.043.614-1.284-2.115-.24-4.327-1.058-4.327-4.7C7.03 9.497 7.35 8.65 7.893 7.962c-.086-.24-.374-1.13.08-2.348 0 0 .695-.236 2.274.905.658-.182 1.346-.273 2.03-.276.684.003 1.372.094 2.03.276 1.578-1.141 2.273-.905 2.273-.905.454 1.218.167 2.108.08 2.348.544.688.864 1.535.864 2.688 0 3.65-2.215 4.456-4.336 4.695.356.307.674.915.674 1.846 0 1.334-.012 2.413-.012 2.748 0 .256.173.553.659.462C21.25 19.86 24 16.254 24 12 24 6.477 19.523 2 14 2h-2z" clip-rule="evenodd"/></svg>
-                            <a href="https://github.com/yosradab?tab=repositories" target="_blank" class="text-sm hover:underline">GitHub Repositories</a>
+                    </div>
+
+                    <!-- Key Strengths -->
+                    <div id="strengths"
+                        class="bg-white/80 dark:bg-white/5 backdrop-blur-sm border border-gray-200 dark:border-white/10 rounded-2xl p-8 transition-colors duration-300 mt-8">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="flex items-start gap-3">
+                                <div
+                                    class="w-8 h-8 bg-rose-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg class="w-5 h-5 text-rose-600 dark:text-rose-400" fill="none"
+                                        stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 dark:text-white mb-1">Full Stack
+                                        Expertise</h4>
+                                    <p class="text-sm text-gray-600 dark:text-white/70">End-to-end development from
+                                        database to UI</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div
+                                    class="w-8 h-8 bg-rose-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg class="w-5 h-5 text-rose-600 dark:text-rose-400" fill="none"
+                                        stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 dark:text-white mb-1">Agile Methodology
+                                    </h4>
+                                    <p class="text-sm text-gray-600 dark:text-white/70">Scrum & Kanban for efficient
+                                        delivery</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div
+                                    class="w-8 h-8 bg-rose-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg class="w-5 h-5 text-rose-600 dark:text-rose-400" fill="none"
+                                        stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 dark:text-white mb-1">Security Focused
+                                    </h4>
+                                    <p class="text-sm text-gray-600 dark:text-white/70">Building secure & scalable
+                                        applications</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div
+                                    class="w-8 h-8 bg-rose-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg class="w-5 h-5 text-rose-600 dark:text-rose-400" fill="none"
+                                        stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 dark:text-white mb-1">Quality Driven</h4>
+                                    <p class="text-sm text-gray-600 dark:text-white/70">Clean code & best practices
+                                        advocate</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Profile Summary -->
-                <div id="profile" class="w-full md:w-2/3 p-6 pt-0 md:pt-6">
-                    <h2 class="section-title text-3xl font-bold mb-6 pt-6 md:pt-0">Profile Summary</h2>
-                    <p class="text-lg leading-relaxed text-gray-700">
-                        Experienced <strong>Full Stack Engineer</strong> with a degree in Software Engineering. Proven expertise in building robust web applications using <strong>Spring Boot, .NET, Angular, Wordpress, and Symfony</strong>. Strong ability to deliver secure and efficient solutions across various sectors, including healthcare. I am passionate about applying <strong>Agile</strong> methodologies to ensure high-quality, continuous delivery.
-                    </p>
-                </div>
+            </div>
             </div>
         </section>
 
-        <!-- Technical Skills -->
-        <section id="skills" class="py-12 bg-white rounded-xl shadow-xl p-8 mb-16 transition duration-300">
-            <h2 class="section-title text-3xl font-bold mb-8">Technical Skills</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                
-                <!-- Programming Languages -->
-                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-200">
-                    <h3 class="text-xl font-bold text-teal-700 mb-3">Languages</h3>
-                    <ul class="space-y-1 text-gray-700 list-disc list-inside">
-                        <li>JAVA, C#, PYTHON, PHP</li>
-                        <li>JAVASCRIPT, HTML, CSS</li>
-                    </ul>
-                </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Technical Skills -->
+            <section id="skills" class="mb-20 fade-in">
+                <h2 class="section-title text-4xl font-bold mb-12 text-gray-900 dark:text-white">Technical Skills</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-                <!-- Frameworks -->
-                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-200">
-                    <h3 class="text-xl font-bold text-teal-700 mb-3">Frameworks & Libraries</h3>
-                    <ul class="space-y-1 text-gray-700 list-disc list-inside">
-                        <li>Spring Boot, .Net, Angular, React</li>
-                        <li>Symfony, JavaFX, DevExpress, Wordpress</li>
-                    </ul>
-                </div>
-
-                <!-- Databases -->
-                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-200">
-                    <h3 class="text-xl font-bold text-teal-700 mb-3">Databases</h3>
-                    <ul class="space-y-1 text-gray-700 list-disc list-inside">
-                        <li>SQL, MySQL, PostgreSQL</li>
-                        <li>SQL SERVER, SQLite</li>
-                    </ul>
-                </div>
-                
-                <!-- DevOps & Methodologies -->
-                <div class="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-200">
-                    <h3 class="text-xl font-bold text-teal-700 mb-3">DevOps & Methodologies</h3>
-                    <ul class="space-y-1 text-gray-700 list-disc list-inside">
-                        <li>Agile (Scrum, Kanban), MVC</li>
-                        <li>JENKINS, DOCKER, JUNIT</li>
-                        <li>GIT, GITHUB</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Professional Experience -->
-        <section id="experience" class="py-12 bg-white rounded-xl shadow-xl p-8 mb-16 transition duration-300">
-            <h2 class="section-title text-3xl font-bold mb-8">Professional Experience</h2>
-            <div class="space-y-10">
-
-                <!-- Job 1: MEISTE CAPITAL (Updated with timeline-item class) -->
-                <div class="timeline-item">
-                    <div class="flex flex-col sm:flex-row justify-between items-start mb-2">
-                        <div>
-                            <h3 class="text-xl font-bold text-gray-900">FULL STACK ENGINEER</h3>
-                            <p class="text-lg text-teal-600">MEISTE CAPITAL | Nancy, France</p>
+                    <!-- Programming Languages -->
+                    <div class="card-3d p-8 rounded-2xl">
+                        <div class="flex items-center mb-6">
+                            <div
+                                class="w-12 h-12 bg-gradient-to-br from-rose-500 to-rose-600 rounded-xl flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Languages</h3>
                         </div>
-                        <span class="text-sm font-semibold text-gray-500 bg-teal-100 px-3 py-1 rounded-full mt-2 sm:mt-0">Mars 2025 - Present</span>
-                    </div>
-                    <ul class="list-disc list-outside ml-5 mt-2 text-gray-700 space-y-1">
-                        <li>Led development of scalable web applications using <strong>Symfony</strong> and <strong>React</strong> for enterprise projects.</li>
-                        <li>Designed and implemented business solutions for event management, e-commerce, and interactive React interfaces.</li>
-                        <li>Managed complex data structures and integrated third-party APIs with secure authentication.</li>
-                        <li>Ensured efficient development cycles using <strong>Agile (Scrum)</strong> methodology.</li>
-                    </ul>
-                </div>
-
-                <!-- Job 2: EASYSOLUTIONS (Updated with timeline-item class) -->
-                <div class="timeline-item">
-                    <div class="flex flex-col sm:flex-row justify-between items-start mb-2">
-                        <div>
-                            <h3 class="text-xl font-bold text-gray-900">SOFTWARE ENGINEER</h3>
-                            <p class="text-lg text-teal-600">EASYSOLUTIONS | Tunis, Tunisia</p>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-900 dark:text-gray-300 font-medium">Java, C#, Python</span>
+                                    <span class="text-rose-600 dark:text-rose-400 font-semibold">95%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="95%" style="width: 0"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-700 dark:text-gray-300 font-medium">JavaScript, HTML,
+                                        CSS</span>
+                                    <span class="text-rose-600 dark:text-rose-400 font-semibold">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="90%" style="width: 0"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-700 dark:text-gray-300 font-medium">PHP</span>
+                                    <span class="text-rose-600 dark:text-rose-400 font-semibold">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="85%" style="width: 0"></div>
+                                </div>
+                            </div>
                         </div>
-                        <span class="text-sm font-semibold text-gray-500 bg-teal-100 px-3 py-1 rounded-full mt-2 sm:mt-0">September 2024 - 2025</span>
                     </div>
-                    <ul class="list-disc list-outside ml-5 mt-2 text-gray-700 space-y-1">
-                        <li>Developed and deployed robust web and desktop applications (.NET and React) for domains like POS and banking.</li>
-                        <li>Implemented <strong>Docker</strong> containers and configured continuous integration with <strong>Jenkins</strong>.</li>
-                        <li>Applied strong understanding of software development principles and design patterns in an Agile environment.</li>
-                    </ul>
-                </div>
-                
-                <!-- Job 3: FREELANCE (Updated with timeline-item class) -->
-                <div class="timeline-item">
-                    <div class="flex flex-col sm:flex-row justify-between items-start mb-2">
-                        <div>
-                            <h3 class="text-xl font-bold text-gray-900">FULL STACK DEVELOPER (FREELANCE)</h3>
-                            <p class="text-lg text-teal-600">Paris, France</p>
+
+                    <!-- Frameworks -->
+                    <div class="card-3d p-8 rounded-2xl">
+                        <div class="flex items-center mb-6">
+                            <div
+                                class="w-12 h-12 bg-gradient-to-br from-rose-500 to-rose-600 rounded-xl flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Frameworks</h3>
                         </div>
-                        <span class="text-sm font-semibold text-gray-500 bg-teal-100 px-3 py-1 rounded-full mt-2 sm:mt-0">October 2023 - May 2024</span>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-700 dark:text-gray-300 font-medium">Spring Boot, .NET</span>
+                                    <span class="text-rose-600 dark:text-rose-400 font-semibold">92%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="92%" style="width: 0"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-700 dark:text-gray-300 font-medium">Angular, React</span>
+                                    <span class="text-rose-600 dark:text-rose-400 font-semibold">88%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="88%" style="width: 0"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-700 dark:text-gray-300 font-medium">Symfony, WordPress</span>
+                                    <span class="text-rose-600 dark:text-rose-400 font-semibold">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="85%" style="width: 0"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <ul class="list-disc list-outside ml-5 mt-2 text-gray-700 space-y-1">
-                        <li>Built responsive interfaces using <strong>Angular</strong> and robust server-side logic with <strong>Spring Boot</strong>.</li>
-                        <li>Designed and maintained secure databases and integrated third-party APIs.</li>
-                        <li>Ensured data security and deployed applications using <strong>Docker</strong> and <strong>Jenkins CI/CD</strong>.</li>
-                    </ul>
+
+                    <!-- Databases -->
+                    <div class="card-3d p-8 rounded-2xl">
+                        <div class="flex items-center mb-6">
+                            <div
+                                class="w-12 h-12 bg-gradient-to-br from-rose-500 to-rose-600 rounded-xl flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4">
+                                    </path>
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Databases</h3>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-700 dark:text-gray-300 font-medium">MySQL, PostgreSQL</span>
+                                    <span class="text-rose-600 dark:text-rose-400 font-semibold">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="90%" style="width: 0"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-700 dark:text-gray-300 font-medium">SQL Server</span>
+                                    <span class="text-rose-600 dark:text-rose-400 font-semibold">87%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="87%" style="width: 0"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-700 dark:text-gray-300 font-medium">SQLite</span>
+                                    <span class="text-rose-600 dark:text-rose-400 font-semibold">83%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="83%" style="width: 0"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DevOps & Tools -->
+                    <div class="card-3d p-8 rounded-2xl">
+                        <div class="flex items-center mb-6">
+                            <div
+                                class="w-12 h-12 bg-gradient-to-br from-rose-500 to-rose-600 rounded-xl flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
+                                    </path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white">DevOps & Tools</h3>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-700 dark:text-gray-300 font-medium">Docker, Jenkins</span>
+                                    <span class="text-rose-600 dark:text-rose-400 font-semibold">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="85%" style="width: 0"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-700 dark:text-gray-300 font-medium">Git, GitHub</span>
+                                    <span class="text-rose-600 dark:text-rose-400 font-semibold">'92%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="92%" style="width: 0"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-700 dark:text-gray-300 font-medium">Agile (Scrum,
+                                        Kanban)</span>
+                                    <span class="text-rose-600 dark:text-rose-400 font-semibold">88%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-width="88%" style="width: 0"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </section>
 
-            </div>
-        </section>
-        
-        <!-- Academic Projects -->
-        <section id="projects" class="py-12 bg-white rounded-xl shadow-xl p-8 mb-16 transition duration-300">
-            <h2 class="section-title text-3xl font-bold mb-8">Academic & Key Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
-                <!-- Project 1: Business & Travel (Enhanced Card) -->
-                <div class="card bg-gray-50 p-6 rounded-lg border-t-4 border-teal-500 transition duration-300">
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Business & Travel</h3>
-                    <p class="text-teal-600 mb-3 text-sm">Web Application (Spring Boot/Angular)</p>
-                    <p class="text-gray-700 text-sm">Comprehensive platform for companies to find and connect with travel partners. Featured user authentication, partner matching, and real-time messaging.</p>
-                    <div class="mt-4">
-                        <span class="inline-block bg-teal-200 dark:bg-gray-700 dark:text-teal-400 text-teal-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full shadow-sm transition duration-300">Spring Boot</span>
-                        <span class="inline-block bg-teal-200 dark:bg-gray-700 dark:text-teal-400 text-teal-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full shadow-sm transition duration-300">Angular</span>
-                        <span class="inline-block bg-teal-200 dark:bg-gray-700 dark:text-teal-400 text-teal-800 text-xs font-medium px-2.5 py-0.5 rounded-full shadow-sm transition duration-300">DevOps (CI/CD)</span>
+            <!-- Professional Experience -->
+            <section id="experience" class="mb-20 fade-in">
+                <h2 class="section-title text-4xl font-bold mb-12 text-gray-900 dark:text-white">Professional Experience
+                </h2>
+                <div class="space-y-12">
+
+                    <!-- Job 1 -->
+                    <div class="mb-12">
+                        <div class="card-3d p-8 rounded-2xl">
+                            <div class="flex flex-col sm:flex-row justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Full Stack Engineer
+                                    </h3>
+                                    <p class="text-xl text-rose-600 dark:text-rose-400 font-medium">MEISTE CAPITAL</p>
+                                    <p class="text-gray-600 dark:text-gray-400">Nancy, France</p>
+                                </div>
+                                <span
+                                    class="bg-gradient-to-r from-rose-500 to-rose-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg mt-2 sm:mt-0">
+                                    March 2025 - Present
+                                </span>
+                            </div>
+                            <ul class="space-y-3 text-gray-900 dark:text-gray-300">
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-rose-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    Led development of scalable web applications using <strong>Symfony</strong> and
+                                    <strong>React</strong> for enterprise projects
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-rose-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    Designed and implemented business solutions for event management, e-commerce, and
+                                    interactive React interfaces
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-rose-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    Managed complex data structures and integrated third-party APIs with secure
+                                    authentication
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-rose-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    Ensured efficient development cycles using <strong>Agile (Scrum)</strong>
+                                    methodology
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Job 2 -->
+                    <div class="mb-12">
+                        <div class="card-3d p-8 rounded-2xl">
+                            <div class="flex flex-col sm:flex-row justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Software Engineer</h3>
+                                    <p class="text-xl text-rose-600 dark:text-rose-400 font-medium">EASYSOLUTIONS</p>
+                                    <p class="text-gray-600 dark:text-gray-400">Tunis, Tunisia</p>
+                                </div>
+                                <span
+                                    class="bg-gradient-to-r from-rose-500 to-rose-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg mt-2 sm:mt-0">
+                                    September 2024 - 2025
+                                </span>
+                            </div>
+                            <ul class="space-y-3 text-gray-900 dark:text-gray-300">
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-rose-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    Developed and deployed robust web and desktop applications (.NET and React) for
+                                    domains like POS and banking
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-rose-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    Implemented <strong>Docker</strong> containers and configured continuous integration
+                                    with <strong>Jenkins</strong>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-rose-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    Applied strong understanding of software development principles and design patterns
+                                    in an Agile environment
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Job 3 -->
+                    <div class="mb-12">
+                        <div class="card-3d p-8 rounded-2xl">
+                            <div class="flex flex-col sm:flex-row justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white">Full Stack Developer
+                                        (Freelance)</h3>
+                                    <p class="text-xl text-rose-600 dark:text-rose-400 font-medium">Independent</p>
+                                </div>
+                                <span
+                                    class="bg-gradient-to-r from-rose-500 to-rose-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg mt-2 sm:mt-0">
+                                    October 2023 - May 2024
+                                </span>
+                            </div>
+                            <ul class="space-y-3 text-gray-900 dark:text-gray-300">
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-rose-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    Built responsive interfaces using <strong>Angular</strong> and robust server-side
+                                    logic with <strong>Spring Boot</strong>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-rose-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    Designed and maintained secure databases and integrated third-party APIs
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-rose-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    Ensured data security and deployed applications using <strong> Docker</strong> and
+                                    <strong>Jenkins CI/CD</strong>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
+            </section>
 
-                <!-- Project 2: GoRando (Enhanced Card) -->
-                <div class="card bg-gray-50 p-6 rounded-lg border-t-4 border-teal-500 transition duration-300">
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">GoRando</h3>
-                    <p class="text-teal-600 mb-3 text-sm">Desktop/Web Application (Symfony/JavaFX)</p>
-                    <p class="text-gray-700 text-sm">Multi-platform event management system covering scheduling, registration, and notifications. Designed using MVC architecture for scalability.</p>
-                    <div class="mt-4">
-                        <span class="inline-block bg-teal-200 dark:bg-gray-700 dark:text-teal-400 text-teal-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full shadow-sm transition duration-300">JavaFX</span>
-                        <span class="inline-block bg-teal-200 dark:bg-gray-700 dark:text-teal-400 text-teal-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full shadow-sm transition duration-300">Symfony</span>
-                        <span class="inline-block bg-teal-200 dark:bg-gray-700 dark:text-teal-400 text-teal-800 text-xs font-medium px-2.5 py-0.5 rounded-full shadow-sm transition duration-300">MySQL</span>
+            <!-- Projects -->
+            <section id="projects" class="mb-20 fade-in">
+                <h2 class="section-title text-4xl font-bold mb-12 text-gray-900 dark:text-white">Featured Projects</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                    <!-- Project 1 -->
+                    <div class="card-3d rounded-2xl overflow-hidden relative stagger-1 fade-in">
+                        <div class="project-ribbon">Featured</div>
+                        <div class="h-48 relative overflow-hidden border-b border-rose-500/30">
+                            <img src="Business.png" alt="Business & Travel Project"
+                                class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Business & Travel</h3>
+                            <p class="text-rose-600 dark:text-rose-400 font-medium mb-3">Spring Boot • Angular</p>
+                            <p class="text-gray-900 dark:text-gray-300 mb-4">
+                                Comprehensive platform for companies to find and connect with travel partners. Featured
+                                user authentication, partner matching, and real-time messaging.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="tech-badge bg-rose-100 dark:bg-rose-900/30 text-rose-800 dark:text-rose-300 text-xs font-medium px-3 py-1 rounded-full">Spring
+                                    Boot</span>
+                                <span
+                                    class="tech-badge bg-rose-100 dark:bg-rose-900/30 text-rose-800 dark:text-rose-300 text-xs font-medium px-3 py-1 rounded-full">Angular</span>
+                                <span
+                                    class="tech-badge bg-rose-100 dark:bg-rose-900/30 text-rose-800 dark:text-rose-300 text-xs font-medium px-3 py-1 rounded-full">CI/CD</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Project 2 -->
+                    <div class="card-3d rounded-2xl overflow-hidden stagger-2 fade-in">
+                        <div class="h-48 relative overflow-hidden border-b border-rose-500/30">
+                            <img src="rando.jpeg" alt="GoRando Project"
+                                class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">GoRando</h3>
+                            <p class="text-rose-600 dark:text-rose-400 font-medium mb-3">Symfony • JavaFX</p>
+                            <p class="text-gray-900 dark:text-gray-300 mb-4">
+                                Multi-platform event management system covering scheduling, registration, and
+                                notifications. Designed using MVC architecture for scalability.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="tech-badge bg-rose-100 dark:bg-rose-900/30 text-rose-800 dark:text-rose-300 text-xs font-medium px-3 py-1 rounded-full">JavaFX</span>
+                                <span
+                                    class="tech-badge bg-rose-100 dark:bg-rose-900/30 text-rose-800 dark:text-rose-300 text-xs font-medium px-3 py-1 rounded-full">Symfony</span>
+                                <span
+                                    class="tech-badge bg-rose-100 dark:bg-rose-900/30 text-rose-800 dark:text-rose-300 text-xs font-medium px-3 py-1 rounded-full">MySQL</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="card-3d rounded-2xl overflow-hidden stagger-3 fade-in">
+                        <div class="h-48 relative overflow-hidden border-b border-rose-500/30">
+                            <img src="smart farm.jpeg" alt="Smart Farm Project"
+                                class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Smart Farm</h3>
+                            <p class="text-rose-600 dark:text-rose-400 font-medium mb-3">C# • DevExpress</p>
+                            <p class="text-gray-900 dark:text-gray-300 mb-4">
+                                Farm management solution featuring livestock tracking, inventory, and real-time
+                                notifications to optimize operations. Developed with C# on Ubuntu.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span
+                                    class="tech-badge bg-rose-100 dark:bg-rose-900/30 text-rose-800 dark:text-rose-300 text-xs font-medium px-3 py-1 rounded-full">C#</span>
+                                <span
+                                    class="tech-badge bg-rose-100 dark:bg-rose-900/30 text-rose-800 dark:text-rose-300 text-xs font-medium px-3 py-1 rounded-full">DevExpress</span>
+                                <span
+                                    class="tech-badge bg-rose-100 dark:bg-rose-900/30 text-rose-800 dark:text-rose-300 text-xs font-medium px-3 py-1 rounded-full">MVC</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </section>
 
-                <!-- Project 3: Smart Farm (Enhanced Card) -->
-                <div class="card bg-gray-50 p-6 rounded-lg border-t-4 border-teal-500 transition duration-300">
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Smart Farm</h3>
-                    <p class="text-teal-600 mb-3 text-sm">Desktop Application (C#/DevExpress)</p>
-                    <p class="text-gray-700 text-sm">Farm management solution featuring livestock tracking, inventory, and real-time notifications to optimize operations. Developed with C# on Ubuntu.</p>
-                    <div class="mt-4">
-                        <span class="inline-block bg-teal-200 dark:bg-gray-700 dark:text-teal-400 text-teal-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full shadow-sm transition duration-300">C#</span>
-                        <span class="inline-block bg-teal-200 dark:bg-gray-700 dark:text-teal-400 text-teal-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full shadow-sm transition duration-300">DevExpress</span>
-                        <span class="inline-block bg-teal-200 dark:bg-gray-700 dark:text-teal-400 text-teal-800 text-xs font-medium px-2.5 py-0.5 rounded-full shadow-sm transition duration-300">MVC</span>
+            <!-- Education -->
+            <section id="education" class="mb-20 fade-in">
+                <h2 class="section-title text-4xl font-bold mb-12 text-gray-900 dark:text-white">Education & Interests
+                </h2>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                    <!-- Education -->
+                    <div class="lg:col-span-2 space-y-8">
+                        <div class="card-3d p-8 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Education</h3>
+                            <div class="space-y-6">
+                                <div class="border-l-4 border-rose-500 pl-6">
+                                    <h4 class="text-xl font-bold text-gray-900 dark:text-white">Degree in Software
+                                        Engineering</h4>
+                                    <p class="text-rose-600 dark:text-rose-400 font-medium">ESPRIT</p>
+                                    <p class="text-gray-900 dark:text-gray-400">2020 - 2024</p>
+                                </div>
+                                <div class="border-l-4 border-rose-500 pl-6">
+                                    <h4 class="text-xl font-bold text-gray-900 dark:text-white">Preparatory Diploma MPSI
+                                    </h4>
+                                    <p class="text-rose-600 dark:text-rose-400 font-medium">ULT</p>
+                                    <p class="text-gray-600 dark:text-gray-400">Mathematics, Physics, and Engineering
+                                        Sciences • 2018 - 2020</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-3d p-8 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Internship Highlights</h3>
+                            <ul class="space-y-4 text-gray-700 dark:text-gray-300">
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-rose-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    <div>
+                                        <strong>Final Internship (TYM):</strong> Full Stack (Spring Boot/Angular) web
+                                        app for mental health specialists, focusing on secure authentication and
+                                        confidential messaging
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-rose-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    <div>
+                                        <strong>Summer Internship (DIPower):</strong> Full Stack (Spring Boot/Angular)
+                                        web app for a non-profit, managing volunteers and online donations
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-rose-500 mr-3 mt-0.5 flex-shrink-0" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    <div>
+                                        <strong>Summer Internship (TTeleccom):</strong> Backend development with Spring
+                                        Boot for user interaction and secure data handling
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Interests & Skills -->
+                    <div class="lg:col-span-1 space-y-8">
+                        <div class="card-3d p-8 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Soft Skills</h3>
+                            <div class="flex flex-wrap gap-3">
+                                <span
+                                    class="tech-badge bg-rose-100 dark:bg-rose-900/30 text-rose-800 dark:text-rose-300 text-sm font-medium px-4 py-2 rounded-full">Leadership</span>
+                                <span
+                                    class="tech-badge bg-rose-100 dark:bg-rose-900/30 text-rose-800 dark:text-rose-300 text-sm font-medium px-4 py-2 rounded-full">Problem-Solving</span>
+                                <span
+                                    class="tech-badge bg-rose-100 dark:bg-rose-900/30 text-rose-800 dark:text-rose-300 text-sm font-medium px-4 py-2 rounded-full">Adaptability</span>
+                                <span
+                                    class="tech-badge bg-rose-100 dark:bg-rose-900/30 text-rose-800 dark:text-rose-300 text-sm font-medium px-4 py-2 rounded-full">Teamwork</span>
+                                <span
+                                    class="tech-badge bg-rose-100 dark:bg-rose-900/30 text-rose-800 dark:text-rose-300 text-sm font-medium px-4 py-2 rounded-full">Continuous
+                                    Learning</span>
+                            </div>
+                        </div>
+
+                        <div class="card-3d p-8 rounded-2xl">
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Interests</h3>
+                            <ul class="space-y-4 text-gray-700 dark:text-gray-300">
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-rose-500 mr-3 mt-0.5 flex-shrink-0" fill="none"
+                                        stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z">
+                                        </path>
+                                    </svg>
+                                    <div>
+                                        <strong>Hiking & Outdoors:</strong> Organizing and managing hiking events
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-5 h-5 text-rose-500 mr-3 mt-0.5 flex-shrink-0" fill="none"
+                                        stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+                                        </path>
+                                    </svg>
+                                    <div>
+                                        <strong>Volunteering:</strong> Active with Lions Jeanne d'Arc and Tunivisions
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Education & Interests -->
-        <section id="education" class="py-12 bg-white rounded-xl shadow-xl p-8 mb-16 transition duration-300">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
-
-                <!-- Education Column -->
-                <div class="lg:col-span-2">
-                    <h2 class="section-title text-3xl font-bold mb-8">Education & Internships</h2>
-                    
-                    <!-- Education Item 1 -->
-                    <div class="timeline-item mb-6">
-                        <h3 class="text-xl font-bold text-gray-900">DEGREE IN SOFTWARE ENGINEERING</h3>
-                        <p class="text-lg text-gray-700">ESPRIT | 2020-2024</p>
-                    </div>
-
-                    <!-- Education Item 2 -->
-                    <div class="timeline-item mb-8">
-                        <h3 class="text-xl font-bold text-gray-900">PREPARATORY DIPLOMA MPSI</h3>
-                        <p class="text-lg text-gray-700">ULT (Mathematics, Physics, and Engineering Sciences) | 2018-2020</p>
-                    </div>
-
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4 mt-6 section-title::after">Internship Highlights</h3>
-                    <ul class="list-disc list-outside ml-5 text-gray-700 space-y-2">
-                        <li><strong>Final Internship (TYM):</strong> Full Stack (Spring Boot/Angular) web app for mental health specialists, focusing on secure authentication and confidential messaging.</li>
-                        <li><strong>Summer Internship (DIPower):</strong> Full Stack (Spring Boot/Angular) web app for a non-profit, managing volunteers and online donations.</li>
-                        <li><strong>Summer Internship (TTeleccom):</strong> Backend development with Spring Boot for user interaction and secure data handling.</li>
-                    </ul>
-                </div>
-
-                <!-- Interests & Soft Skills Column -->
-                <div id="interests" class="lg:col-span-1 lg:pl-6 pt-6 lg:pt-0">
-                    <h2 class="section-title text-3xl font-bold mb-8">Interests & Skills</h2>
-                    
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Soft Skills</h3>
-                    <div class="flex flex-wrap gap-2 mb-8">
-                        <span class="bg-teal-100 dark:bg-gray-700 dark:text-teal-400 text-teal-800 text-sm font-medium px-3 py-1 rounded-full shadow-sm transition duration-300">Leadership</span>
-                        <span class="bg-teal-100 dark:bg-gray-700 dark:text-teal-400 text-teal-800 text-sm font-medium px-3 py-1 rounded-full shadow-sm transition duration-300">Problem-Solving</span>
-                        <span class="bg-teal-100 dark:bg-gray-700 dark:text-teal-400 text-teal-800 text-sm font-medium px-3 py-1 rounded-full shadow-sm transition duration-300">Adaptability</span>
-                        <span class="bg-teal-100 dark:bg-gray-700 dark:text-teal-400 text-teal-800 text-sm font-medium px-3 py-1 rounded-full shadow-sm transition duration-300">Teamwork</span>
-                        <span class="bg-teal-100 dark:bg-gray-700 dark:text-teal-400 text-teal-800 text-sm font-medium px-3 py-1 rounded-full shadow-sm transition duration-300">Continuous Learning</span>
-                    </div>
-
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Interests</h3>
-                    <ul class="list-disc list-inside text-gray-700 space-y-2">
-                        <li><strong>Hiking and Outdoor Activities:</strong> Actively involved in organizing and managing hiking events.</li>
-                        <li><strong>Volunteering:</strong> Community engagement with Lions Jeanne d'Arc and Tunivisions associations.</li>
-                    </ul>
-                </div>
-
-            </div>
-        </section>
-
+            </section>
+        </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-8 mt-10 shadow-inner transition duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-lg">&copy; 2025 Yosra Dab. All rights reserved.</p>
-            <p class="text-sm text-gray-400 mt-2">Built with modern web technologies and Tailwind CSS.</p>
+    <footer class="py-12 text-gray-900 dark:text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <p class="text-2xl font-bold mb-2">Let's Connect!</p>
+                <p class="text-gray-900 dark:text-gray-400 mb-6">Feel free to reach out for collaborations or just a
+                    friendly chat.</p>
+                <div class="flex justify-center gap-6 mb-8">
+                    <a href="mailto:Dabyosra@gmail.com" class="hover:text-rose-400 transition">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/yosradab/" target="_blank"
+                        class="hover:text-rose-400 transition">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.568-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                    </a>
+                    <a href="https://github.com/yosradab?tab=repositories" target="_blank"
+                        class="hover:text-rose-400 transition">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd"
+                                d="M12 2C6.477 2 2 6.477 2 12c0 4.254 2.75 7.86 6.567 9.157.48.088.654-.208.654-.463 0-.23-.009-.844-.014-1.656-2.67.576-3.232-1.288-3.232-1.288-.437-1.112-1.065-1.411-1.065-1.411-.873-.598.066-.587.066-.587.96.067 1.464.985 1.464.985.855 1.468 2.238 1.043 2.784.796.086-.618.337-1.043.614-1.284-2.115-.24-4.327-1.058-4.327-4.7 0-1.04.37-1.887.98-2.55-.098-.24-.425-1.204.093-2.51 0 0 .8-.256 2.62.976.76-.211 1.575-.317 2.384-.321.81.004 1.624.11 2.384.321 1.82-1.232 2.62-.976 2.62-.976.518 1.306.191 2.27.093 2.51.61.663.98 1.51.98 2.55 0 3.65-2.213 4.457-4.32 4.693.34.293.64.87.64 1.754 0 1.267-.011 2.287-.011 2.598 0 .254.173.552.662.458C21.25 19.858 24 16.254 24 12c0-5.523-4.477-10-10-10z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    <a href="tel:+21623309333" class="hover:text-rose-400 transition">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+                <p class="text-gray-900 dark:text-gray-400 text-sm">&copy; 2025 Yosra Dab. All rights reserved.</p>
+                <p class="text-gray-900 dark:text-gray-500 text-xs mt-2">Built with passion using modern web
+                    technologies</p>
+            </div>
         </div>
     </footer>
 
 </body>
+
 </html>
