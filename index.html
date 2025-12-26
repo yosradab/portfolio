@@ -29,7 +29,7 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(180deg, #fff1f2 0%, #fffbeeb5 50%, #fdf2f8 100%);
+            background: linear-gradient(180deg, #fff5f7 0%, #fffcfc 50%, #fff0f3 100%);
             /* Rose -> Warm -> Lavender */
             background-attachment: fixed;
             color: #000000;
@@ -176,12 +176,81 @@
         }
 
         /* Header - Professional Tech Style */
-        /* Profile and Strengths Containers - Rose Theme Identity */
-        #profile,
+        /* Enhanced Profile Section with Luxurious Layers */
+        #profile {
+            background:
+                linear-gradient(135deg,
+                    rgba(255, 255, 255, 0.95) 0%,
+                    rgba(255, 248, 250, 0.9) 100%);
+            border: 2px solid rgba(244, 63, 94, 0.15);
+            box-shadow:
+                0 12px 45px rgba(244, 63, 94, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9),
+                inset 0 -1px 0 rgba(244, 63, 94, 0.06);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #profile::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(244, 63, 94, 0.4),
+                    rgba(244, 63, 94, 0.4),
+                    transparent);
+            box-shadow: 0 2px 10px rgba(244, 63, 94, 0.3);
+        }
+
+        #profile:hover {
+            transform: translateY(-4px);
+            box-shadow:
+                0 20px 60px rgba(244, 63, 94, 0.12),
+                inset 0 1px 0 rgba(255, 255, 255, 1),
+                inset 0 -1px 0 rgba(244, 63, 94, 0.08);
+            border-color: rgba(244, 63, 94, 0.25);
+        }
+
+        /* Enhanced Strengths Section with 3D Depth */
         #strengths {
-            background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%);
-            border: 1px solid rgba(244, 63, 94, 0.2);
-            transition: all 0.3s ease;
+            background:
+                linear-gradient(135deg,
+                    rgba(255, 252, 253, 0.98) 0%,
+                    rgba(255, 245, 248, 0.95) 100%);
+            border: 2px solid rgba(244, 63, 94, 0.12);
+            box-shadow:
+                0 10px 40px rgba(244, 63, 94, 0.07),
+                inset 0 1px 0 rgba(255, 255, 255, 0.95),
+                inset 0 0 60px rgba(244, 63, 94, 0.02);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        #strengths::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(244, 63, 94, 0.2),
+                    transparent);
+        }
+
+        #strengths:hover {
+            transform: translateY(-4px);
+            box-shadow:
+                0 15px 50px rgba(244, 63, 94, 0.11),
+                inset 0 1px 0 rgba(255, 255, 255, 1),
+                inset 0 0 80px rgba(244, 63, 94, 0.03);
+            border-color: rgba(244, 63, 94, 0.2);
         }
 
         .dark #profile,
@@ -224,7 +293,7 @@
 
         /* Hero Section - Tech Professional */
         .hero-gradient {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 241, 242, 0.5) 100%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 250, 252, 0.96) 100%);
             /* Slight Rose Tint */
             backdrop-filter: blur(20px);
             position: relative;
@@ -932,8 +1001,8 @@
 
                             <!-- Contact Links - Redesigned -->
                             <div class="flex flex-wrap justify-center md:justify-start gap-3">
-                                <a href="mailto:Dabyosra@gmail.com"
-                                    class="group relative bg-white/10 backdrop-blur-md hover:bg-white/20 border border-gray-200 dark:border-white/20 text-gray-900 dark:text-white px-5 py-3 rounded-xl text-sm font-semibold transition-all duration-300 flex items-center gap-2 hover:shadow-xl hover:shadow-rose-500/30 hover:-translate-y-1 bg-white dark:bg-white/10">
+                                <a href="/cdn-cgi/l/email-protection#024663607b6d71706342656f636b6e2c616d6f"
+                                    class="group relative bg-white/90 backdrop-blur-md hover:bg-white border-2 border-rose-200 dark:border-white/20 text-gray-900 dark:text-white px-5 py-3 rounded-xl text-sm font-semibold transition-all duration-300 flex items-center gap-2 hover:shadow-xl hover:shadow-rose-500/30 hover:-translate-y-1 bg-white dark:bg-white/10">
                                     <svg class="w-5 h-5 text-rose-500 dark:text-rose-400 group-hover:scale-110 transition"
                                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -943,7 +1012,7 @@
                                     Email
                                 </a>
                                 <a href="https://www.linkedin.com/in/yosradab/" target="_blank"
-                                    class="group relative bg-white/10 backdrop-blur-md hover:bg-white/20 border border-gray-200 dark:border-white/20 text-gray-900 dark:text-white px-5 py-3 rounded-xl text-sm font-semibold transition-all duration-300 flex items-center gap-2 hover:shadow-xl hover:shadow-rose-500/30 hover:-translate-y-1 bg-white dark:bg-white/10">
+                                    class="group relative bg-white/90 backdrop-blur-md hover:bg-white border-2 border-rose-200 dark:border-white/20 text-gray-900 dark:text-white px-5 py-3 rounded-xl text-sm font-semibold transition-all duration-300 flex items-center gap-2 hover:shadow-xl hover:shadow-rose-500/30 hover:-translate-y-1 bg-white dark:bg-white/10">
                                     <svg class="w-5 h-5 text-rose-500 dark:text-rose-400 group-hover:scale-110 transition"
                                         fill="currentColor" viewBox="0 0 24 24">
                                         <path
@@ -952,7 +1021,7 @@
                                     LinkedIn
                                 </a>
                                 <a href="https://github.com/yosradab?tab=repositories" target="_blank"
-                                    class="group relative bg-white/10 backdrop-blur-md hover:bg-white/20 border border-gray-200 dark:border-white/20 text-gray-900 dark:text-white px-5 py-3 rounded-xl text-sm font-semibold transition-all duration-300 flex items-center gap-2 hover:shadow-xl hover:shadow-rose-500/30 hover:-translate-y-1 bg-white dark:bg-white/10">
+                                    class="group relative bg-white/90 backdrop-blur-md hover:bg-white border-2 border-rose-200 dark:border-white/20 text-gray-900 dark:text-white px-5 py-3 rounded-xl text-sm font-semibold transition-all duration-300 flex items-center gap-2 hover:shadow-xl hover:shadow-rose-500/30 hover:-translate-y-1 bg-white dark:bg-white/10">
                                     <svg class="w-5 h-5 text-rose-500 dark:text-rose-400 group-hover:scale-110 transition"
                                         fill="currentColor" viewBox="0 0 24 24">
                                         <path fill-rule="evenodd"
@@ -962,7 +1031,7 @@
                                     GitHub
                                 </a>
                                 <a href="tel:+21623309333"
-                                    class="group relative bg-white/10 backdrop-blur-md hover:bg-white/20 border border-gray-200 dark:border-white/20 text-gray-900 dark:text-white px-5 py-3 rounded-xl text-sm font-semibold transition-all duration-300 flex items-center gap-2 hover:shadow-xl hover:shadow-rose-500/30 hover:-translate-y-1 bg-white dark:bg-white/10">
+                                    class="group relative bg-white/90 backdrop-blur-md hover:bg-white border-2 border-rose-200 dark:border-white/20 text-gray-900 dark:text-white px-5 py-3 rounded-xl text-sm font-semibold transition-all duration-300 flex items-center gap-2 hover:shadow-xl hover:shadow-rose-500/30 hover:-translate-y-1 bg-white dark:bg-white/10">
                                     <svg class="w-5 h-5 text-rose-500 dark:text-rose-400 group-hover:scale-110 transition"
                                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -984,8 +1053,8 @@
                         <h2
                             class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
                             <div
-                                class="w-12 h-12 bg-gradient-to-br from-rose-500 to-rose-600 rounded-xl flex items-center justify-center shadow-lg shadow-rose-500/30">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                class="w-14 h-14 bg-gradient-to-br from-rose-500 to-rose-600 rounded-2xl shadow-xl shadow-rose-500/30 flex items-center justify-center shadow-lg shadow-rose-500/30">
+                                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
                                 </svg>
@@ -1017,43 +1086,43 @@
                     <!-- Key Strengths -->
                     <div id="strengths"
                         class="bg-white/80 dark:bg-white/5 backdrop-blur-sm border border-gray-200 dark:border-white/10 rounded-2xl p-8 transition-colors duration-300 mt-8">
-                        <div class="grid md:grid-cols-2 gap-4">
-                            <div class="flex items-start gap-3">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="flex items-start gap-4 group">
                                 <div
-                                    class="w-8 h-8 bg-rose-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                                    <svg class="w-5 h-5 text-rose-600 dark:text-rose-400" fill="none"
+                                    class="w-12 h-12 bg-gradient-to-br from-rose-100 to-rose-200 dark:from-rose-500/20 dark:to-rose-600/20 rounded-2xl shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg class="w-6 h-6 text-rose-600 dark:text-rose-400" fill="none"
                                         stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M5 13l4 4L19 7"></path>
                                     </svg>
                                 </div>
                                 <div>
-                                    <h4 class="font-semibold text-gray-900 dark:text-white mb-1">Full Stack
+                                    <h4 class="font-bold text-lg text-gray-900 dark:text-white mb-2">Full Stack
                                         Expertise</h4>
                                     <p class="text-sm text-gray-600 dark:text-white/70">End-to-end development from
                                         database to UI</p>
                                 </div>
                             </div>
-                            <div class="flex items-start gap-3">
+                            <div class="flex items-start gap-4 group">
                                 <div
-                                    class="w-8 h-8 bg-rose-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                                    <svg class="w-5 h-5 text-rose-600 dark:text-rose-400" fill="none"
+                                    class="w-12 h-12 bg-gradient-to-br from-rose-100 to-rose-200 dark:from-rose-500/20 dark:to-rose-600/20 rounded-2xl shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg class="w-6 h-6 text-rose-600 dark:text-rose-400" fill="none"
                                         stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                                     </svg>
                                 </div>
                                 <div>
-                                    <h4 class="font-semibold text-gray-900 dark:text-white mb-1">Agile Methodology
+                                    <h4 class="font-bold text-lg text-gray-900 dark:text-white mb-2">Agile Methodology
                                     </h4>
                                     <p class="text-sm text-gray-600 dark:text-white/70">Scrum & Kanban for efficient
                                         delivery</p>
                                 </div>
                             </div>
-                            <div class="flex items-start gap-3">
+                            <div class="flex items-start gap-4 group">
                                 <div
-                                    class="w-8 h-8 bg-rose-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                                    <svg class="w-5 h-5 text-rose-600 dark:text-rose-400" fill="none"
+                                    class="w-12 h-12 bg-gradient-to-br from-rose-100 to-rose-200 dark:from-rose-500/20 dark:to-rose-600/20 rounded-2xl shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg class="w-6 h-6 text-rose-600 dark:text-rose-400" fill="none"
                                         stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
@@ -1061,23 +1130,23 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <h4 class="font-semibold text-gray-900 dark:text-white mb-1">Security Focused
+                                    <h4 class="font-bold text-lg text-gray-900 dark:text-white mb-2">Security Focused
                                     </h4>
                                     <p class="text-sm text-gray-600 dark:text-white/70">Building secure & scalable
                                         applications</p>
                                 </div>
                             </div>
-                            <div class="flex items-start gap-3">
+                            <div class="flex items-start gap-4 group">
                                 <div
-                                    class="w-8 h-8 bg-rose-500/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                                    <svg class="w-5 h-5 text-rose-600 dark:text-rose-400" fill="none"
+                                    class="w-12 h-12 bg-gradient-to-br from-rose-100 to-rose-200 dark:from-rose-500/20 dark:to-rose-600/20 rounded-2xl shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg class="w-6 h-6 text-rose-600 dark:text-rose-400" fill="none"
                                         stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
                                 </div>
                                 <div>
-                                    <h4 class="font-semibold text-gray-900 dark:text-white mb-1">Quality Driven</h4>
+                                    <h4 class="font-bold text-lg text-gray-900 dark:text-white mb-2">Quality Driven</h4>
                                     <p class="text-sm text-gray-600 dark:text-white/70">Clean code & best practices
                                         advocate</p>
                                 </div>
@@ -1099,8 +1168,8 @@
                     <div class="card-3d p-6 md:p-8 rounded-2xl">
                         <div class="flex items-center mb-6">
                             <div
-                                class="w-12 h-12 bg-gradient-to-br from-rose-500 to-rose-600 rounded-xl flex items-center justify-center mr-4">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                class="w-14 h-14 bg-gradient-to-br from-rose-500 to-rose-600 rounded-2xl shadow-xl shadow-rose-500/30 flex items-center justify-center mr-4">
+                                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
                                 </svg>
@@ -1143,8 +1212,8 @@
                     <div class="card-3d p-6 md:p-8 rounded-2xl">
                         <div class="flex items-center mb-6">
                             <div
-                                class="w-12 h-12 bg-gradient-to-br from-rose-500 to-rose-600 rounded-xl flex items-center justify-center mr-4">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                class="w-14 h-14 bg-gradient-to-br from-rose-500 to-rose-600 rounded-2xl shadow-xl shadow-rose-500/30 flex items-center justify-center mr-4">
+                                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z">
                                     </path>
@@ -1187,8 +1256,8 @@
                     <div class="card-3d p-6 md:p-8 rounded-2xl">
                         <div class="flex items-center mb-6">
                             <div
-                                class="w-12 h-12 bg-gradient-to-br from-rose-500 to-rose-600 rounded-xl flex items-center justify-center mr-4">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                class="w-14 h-14 bg-gradient-to-br from-rose-500 to-rose-600 rounded-2xl shadow-xl shadow-rose-500/30 flex items-center justify-center mr-4">
+                                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4">
                                     </path>
@@ -1231,8 +1300,8 @@
                     <div class="card-3d p-6 md:p-8 rounded-2xl">
                         <div class="flex items-center mb-6">
                             <div
-                                class="w-12 h-12 bg-gradient-to-br from-rose-500 to-rose-600 rounded-xl flex items-center justify-center mr-4">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                class="w-14 h-14 bg-gradient-to-br from-rose-500 to-rose-600 rounded-2xl shadow-xl shadow-rose-500/30 flex items-center justify-center mr-4">
+                                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
                                     </path>
@@ -1680,7 +1749,8 @@
                 <p class="text-gray-900 dark:text-gray-400 mb-6">Feel free to reach out for collaborations or just a
                     friendly chat.</p>
                 <div class="flex justify-center gap-6 mb-8">
-                    <a href="mailto:Dabyosra@gmail.com" class="hover:text-rose-400 transition">
+                    <a href="/cdn-cgi/l/email-protection#450124273c2a363724052228242c296b262a28"
+                        class="hover:text-rose-400 transition">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
@@ -1714,9 +1784,3 @@
                 <p class="text-gray-900 dark:text-gray-500 text-xs mt-2">Built with passion using modern web
                     technologies</p>
             </div>
-        </div>
-    </footer>
-
-</body>
-
-</html>
